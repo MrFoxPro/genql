@@ -63,13 +63,13 @@ export const createFetcher = ({
             if (Array.isArray(json)) {
                 return json.map((json) => {
                     if (json?.errors?.length) {
-                        throw new GenqlError(json.errors || [], json.data)
+                        return new GenqlError(json.errors || [], json.data)
                     }
                     return json.data
                 })
             } else {
                 if (json?.errors?.length) {
-                    throw new GenqlError(json.errors || [], json.data)
+                    return new GenqlError(json.errors || [], json.data)
                 }
                 return json.data
             }

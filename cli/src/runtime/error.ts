@@ -1,10 +1,10 @@
-export class GenqlError extends Error {
+export class GenqlError<TData> extends Error {
     errors: Array<GraphqlError> = []
     /**
      * Partial data returned by the server
      */
-    data?: any
-    constructor(errors: any[], data: any) {
+    data?: TData
+    constructor(errors: any[], data: TData) {
         let message = Array.isArray(errors)
             ? errors.map((x) => x?.message || '').join('\n')
             : ''

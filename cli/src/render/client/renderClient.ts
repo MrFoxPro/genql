@@ -131,7 +131,7 @@ function renderClientType({ queryType, mutationType, subscriptionType }) {
         interfaceContent += `
       query<R extends ${requestTypeName(queryType)}>(
           request: R & { __name?: string },
-      ): Promise<FieldsSelection<${queryType.name}, R>>
+      ): Promise<FieldsSelection<${queryType.name}, R> | GenqlError<FieldsSelection<${queryType.name}, R>>>
       `
     }
 
@@ -139,7 +139,7 @@ function renderClientType({ queryType, mutationType, subscriptionType }) {
         interfaceContent += `
       mutation<R extends ${requestTypeName(mutationType)}>(
           request: R & { __name?: string },
-      ): Promise<FieldsSelection<${mutationType.name}, R>>
+      ): Promise<FieldsSelection<${mutationType.name}, R> | GenqlError<FieldsSelection<${mutationType.name}, R>>>
       `
     }
 
